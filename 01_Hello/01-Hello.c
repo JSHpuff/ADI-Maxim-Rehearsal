@@ -7,7 +7,7 @@
  * 
  */
 
- /* ====== Includes ====== */
+ /* Includes */
 
  /**
   * - This is a standard C library header 
@@ -15,7 +15,7 @@
   * - In this code, it's used for printf()
   * - printf(): Output text to the terminal.
   */
- #include <stdio.h>
+#include <stdio.h>
 
  /**
   * - This standard C library header
@@ -23,27 +23,27 @@
   * - like uint8_t, int32_t, etc
   * - To ensure consistent integer sizes across diff platforms.
   */
- #include <stdint.h>
+#include <stdint.h>
 
  /**
   * - This is specific to the Maxim/Analog Device microcontroller
   * - Contains device-specific definitions & configurations
   */
- #include "mxc_device.h"
+#include "mxc_device.h"
 
  /**
   * - Provides delay functions for the microcontroller
   * - The code using MXC_Delay() to create 0.5 second
   */
- #include "mxc_delay.h"
+#include "mxc_delay.h"
 
  /**
   * - Provides functions for controlling LEDs on the board
   * - The code using LED_On() & LED_Off() function
   */
- #include "led.h"
+#include "led.h"
 
- int main(void){
+int main(void){
     int count = 0;
     printf("Hello!\n");
     while (1){
@@ -53,5 +53,4 @@
         MXC_Delay(500000);
         printf("Count = %d:\n", count++);
     }
-    
- }
+}

@@ -30,7 +30,7 @@
 #ifndef LIBRARIES_PERIPHDRIVERS_INCLUDES_MAX32662_MXC_DEVICE_H_
 #define LIBRARIES_PERIPHDRIVERS_INCLUDES_MAX32662_MXC_DEVICE_H_
 
-/* ====== Inlcudings ====== */
+/* Inlcudings */
 #include "max32662.h"           /* Chip-specific definitions */
 #include "mxc_errors.h"         /* Error code definitions */
 #include "mxc_pins.h"           /* Pin definitions */
