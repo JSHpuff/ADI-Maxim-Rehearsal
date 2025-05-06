@@ -1,7 +1,10 @@
 /**
  * @file        01-Hello.c
+ * 
  * @brief       Hello & Simple Blink
+ * 
  * @details     Using UART by printf & Display the blink
+ * 
  */
 
  /* ====== Includes ====== */

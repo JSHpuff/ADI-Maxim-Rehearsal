@@ -20,8 +20,11 @@
 
  /**
   * @file       mxc_device.h
+  * 
   * @brief      Contain device and revision specific definitions
-  * @details    Using for pratice the code. The copyright remain above.
+  * 
+  * @note    Using for pratice. Copyright remain above.
+  * 
   */
 
 #ifndef LIBRARIES_PERIPHDRIVERS_INCLUDES_MAX32662_MXC_DEVICE_H_
@@ -57,4 +60,4 @@
 #error TARGET_REV NOT SUPPORTED
 #endif
 
-#endif //LIBRARIES_PERIPHDRIVERS_INCLUDES_MAX32662_MXC_DEVICE_H_
+#endif // LIBRARIES_PERIPHDRIVERS_INCLUDES_MAX32662_MXC_DEVICE_H_
