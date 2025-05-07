@@ -191,12 +191,47 @@ typedef enum{
   MXC_IRQ_EXT_COUNT,
 } IRQn_Type;
 
-/* Processor and Core Peripheral SectioCVn */
+/* ====== Processor and Core Peripheral Section ====== */
 /* Configuration of the Cortex-M Processor and Core Peripherals */
 #define __CM4_REV               0x0100      /*!< Cortex-M4 Core Revision */
 #define __MPU_PRESENT           1           /*!< MPU present or not */
 #define __NVIC_PRIO_BITS        3           /*!< Number of Bits used for Priority Levels */
 #define __Vendor_SysTickConfig  0           /*!< Set to 1 if different SysTick Config is used */
 #define __FPU_PRESENT           1           /*!< FPU present or not */
+
+#include <core_cm4.h>
+#include "system_max32662.h"
+
+/* ====== Device Specific Memory Section ====== */
+/* Read-Only Memory */
+#define MXC_ROM_MEM_BASE        0x00000000UL        /* Using for bootloader code and fixed system function */
+#define MXC_ROM_MEM_SIZE        0x00020000UL        /* Size: 128KB */
+
+/* Flash Memory */
+#define MXC_FLASH_MEM_BASE      0x10000000UL        /* Non-volatile memory: Where application code and constasnt data are stored */
+#define MXC_FLASH_PAGE_SIZE     0x00002000UL        /* Size: 8KB */
+#define MXC_FLASH_MEM_SIZE      0x00040000UL        /* Size: 256KB */
+
+/* Information Memory */
+#define MXC_INFO0_MEM_BASE      0x10800000UL        /* Stored device configuration, calibration data, or other system information */
+#define MXC_INFO1_MEM_BASE      0x10802000UL
+#define MXC_INFO_MEM_BASE       MXC_INFO0_MEM_BASE
+#define MXC_INFO_MEM_SIZE       0x00002000UL        /* Size: 8KB */
+#define MXC_INFO0_MEM_SIZE      0x00002000UL        /* Size: 8KB */
+#define MXC_INFO1_MEM_SIZE      0x00002000UL        /* Size: 8KB */
+
+/* Static RAM (Random Access Memory) */
+#define MXC_SRAM_MEM_BASE       0x20000000UL
+#define MXC_SRAM_MEM_SIZE       0x00014000UL        /* Size: 80KB */
+
+/* ====== Device Specific Peripheral Section ====== 
+ * Base addresses and configuration settings for all MAX32662 peripheral modules
+ */
+/* Global Control */
+#define MXC_BASE_GCR            ((uint32_t)0x40000000UL)
+#define MXC_GCR                 ((mxc_gcr_regs_t *)MXC_BASE_GCR)
+
+/* Non-battery backed SI Registers */
+
 
 #endif // LIBRARIES_CMSIS_DEVICE_MAXIM_MAX32662_INCLUDE_MAX32662_H_
