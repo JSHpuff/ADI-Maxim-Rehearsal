@@ -232,6 +232,57 @@ typedef enum{
 #define MXC_GCR                 ((mxc_gcr_regs_t *)MXC_BASE_GCR)
 
 /* Non-battery backed SI Registers */
+#define MXC_BASE_SIR            ((uint32_t)0x40000400UL)
+#define MXC_SIR                 ((mxc_sir_regs_t *)MXC_BASE_SIR)
+
+/* Function Control Registers */
+#define MXC_BASE_FCR            ((uint32_t)0x40000800UL)
+#define MXC_FCR                 ((mxc_fcr_regs_t *)MXC_BASE_FCR)
+
+/* Watchdog */
+#define MXC_BASE_WDT            ((uint32_t)0x40003000UL)
+#define MXC_WDT                 ((mxc_wdt_regs_t *)MXC_BASE_WDT)
+#define MXC_WDT0                MXC_WDT
+
+/* AES keys */
+#define MXC_BASE_AESKEYS        ((uint32_t)0x402050000UL)
+#define MXC_AESKEYS             ((mxc_aeskeys_regs_t *)MXC_BASE_AESKEYS)
+
+/* Trim System Initialization */
+#define MXC_BASE_TRIMSIR        ((uint32_t)0x40105400UL)
+#define MXC_TRIMSIR             ((mxc_trimsir_regs_t *)MXC_BASE_TRIMSIR)
+
+/* Real Time Clock */
+#define MXC_BASE_RTC            ((uint32_t)0x40106000UL)
+#define MXC_RTC                 ((mxc_rtc_regs_t *)MXC_BASE_RTC)
+
+/* Power Sequencer */
+#define MXC_BASE_PWRSEQ         ((uint32_t)0x40106800UL)
+#define MXC_PWRSEQ              ((mxc_pwrseq_regs_t *)MXC_BASE_PWRSEQ)
+
+/* Misc Control */
+#define MXC_BASE_MCR            ((uint32_t)0x40106C00UL)
+#define MXC_MCR                 ((mxc_mcr_regs_t *)MXC_BASE_MCR)
+
+/* AES, Advanced Encryption Standard */
+#define MXC_BASE_AES            ((uint32_t)0x40207400UL)
+#define MXC_AES                 ((mxc_aes_regs_t *)MXC_BASE_AES)
+
+/* GPIO */
+#define MXC_CFG_GPIO_INSTANCES  (1)
+#define MXC_CFG_GPIO_PINS_PORT  (32)
+#define MXC_BASE_GPIO0          ((uint32_t)0x40008000UL)
+#define MXC_GPIO0               ((mxc_gpio_regs_t *)MXC_BASE_GPIO0)
+#define MXC_GPIO_GET_IDX(p)     ((p) == MXC_GPIO0? 0: -1)
+#define MXC_GPIO_GET_GPIO(i)    ((i) == 0? MXC_GPIO0: 0)
+#define MXC_GPIO_GET_IRQ(i)     ((i) == 0? GPIO0_IRQn: 0)
+
+/* Timer */
+#define SEC(s)                  (((uint32_t)s) * 1000000UL)
+#define MSEC(ms)                (ms * 1000UL)
+#define USEC(us)                (us)
+#define MXC_CFG_TMR_INSTANCES   (4)
+
 
 
 #endif // LIBRARIES_CMSIS_DEVICE_MAXIM_MAX32662_INCLUDE_MAX32662_H_
