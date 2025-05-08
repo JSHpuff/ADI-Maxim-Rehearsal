@@ -271,6 +271,7 @@ typedef enum{
 /* GPIO */
 #define MXC_CFG_GPIO_INSTANCES  (1)
 #define MXC_CFG_GPIO_PINS_PORT  (32)
+
 #define MXC_BASE_GPIO0          ((uint32_t)0x40008000UL)
 #define MXC_GPIO0               ((mxc_gpio_regs_t *)MXC_BASE_GPIO0)
 #define MXC_GPIO_GET_IDX(p)     ((p) == MXC_GPIO0? 0: -1)
@@ -283,6 +284,214 @@ typedef enum{
 #define USEC(us)                (us)
 #define MXC_CFG_TMR_INSTANCES   (4)
 
+#define MXC_BASE_TMR0           ((uint32_t)0x40010000UL)
+#define MXC_TMR0                ((mxc_tmr_regs_t *)MXC_BASE_TMR0)
+#define MXC_BASE_TMR1           ((uint32_t)0x40011000UL)
+#define MXC_TMR1                ((mxc_tmr_regs_t *)MXC_BASE_TMR1)
+#define MXC_BASE_TMR2           ((uint32_t)0x40012000UL)
+#define MXC_TMR2                ((mxc_tmr_regs_t *)MXC_BASE_TMR2)
+#define MXC_BASE_TMR3           ((uint32_t)0x40113000UL)
+#define MXC_TMR3                ((mxc_tmr_regs_t *)MXC_BASE_TMR3)
 
+#define MXC_TMR_GET_IRQ(i)            \
+    (IRQn_Type)((i) == 0? TMR0_IRQn:  \
+                (i) == 1? TMR1_IRQn:  \
+                (i) == 2? TMR2_IRQn:  \
+                (i) == 3? TMR3_IRQn:  0)
+
+#define MXC_TMR_GET_BASE(i)   \
+    ((i) == 0? MXC_BASE_TMR0: \
+     (i) == 1? MXC_BASE_TMR1: \
+     (i) == 2? MXC_BASE_TMR2: \
+     (i) == 3? MXC_BASE_TMR3: 0)
+
+#define MXC_TMR_GET_TMR(i)  \
+    ((i) == 0? MXC_TMR0:    \
+     (i) == 1? MXC_TMR1:    \
+     (i) == 2? MXC_TMR2:    \
+     (i) == 3? MXC_TMR3:    0)
+
+#define MXC_TMR_GET_IDX(p)  \
+    ((p) == MXC_TMR0? 0:    \
+     (p) == MXC_TMR1? 1:    \
+     (p) == MXC_TMR2? 2:    \
+     (p) == MXC_TMR3? 3:    -1)
+
+/* I2C, Inter-Integrated Circuit */
+#define MXC_I2C_INSTANCES       (2)
+#define MXC_I2C_FIFO_DEPTH      (8)
+
+#define MXC_BASE_I2C0           ((uint32_t)0x4001D000UL)
+#define MXC_I2C0                ((mxc_i2c_regs_t *)MXC_BASE_I2C0)
+#define MXC_BASE_I2C1           ((uint32_t)0x4001E000UL)
+#define MXC_I2C1                ((mxc_i2c_regs_t *)MXC_BASE_I2C1)
+
+#define MXC_I2C_GET_IRQ(i)      (IRQn_Type)((i) == 0? I2C0_IRQn: \
+                                            (i) == 1? I2C1_IRQn: 0)
+#define MXC_I2C_GET_BASE(i)     ((i) == 0?  MXC_BASE_I2C0: \
+                                 (i) == 1?  MXC_BASE_I2C1: 0)
+#define MXC_I2C_GET_I2C(i)      ((i) == 0?  MXC_I2C0: \
+                                 (i) == 1?  MXC_I2C1: 0)
+#define MXC_I2C_GET_IDX(p)      ((p) == MXC_I2C0? 0: \
+                                 (p) == MXC_I2C1? 1: -1)
+
+/* DMA, Direct Memory Access */
+#define MXC_DMA_CHANNELS        (4)
+#define MXC_DMA_INSTANCES       (1)
+
+#define MXC_BASE_DMA            ((uint32_t)0x40028000UL)
+#define MXC_DMA                 ((mxc_dma_regs_t *)MXC_BASE_DMA)
+#define MXC_DMA_GET_IDX(p)      ((p) == MXC_DMA? 0: -1)
+
+#define MXC_DMA_CH_GET_IRQ(i)   ((IRQn_Type)(((i) == 0)? DMA0_IRQn: \
+                                             ((i) == 1)? DMA1_IRQn: \
+                                             ((i) == 2)? DMA2_IRQn: \
+                                             ((i) == 3)? DMA3_IRQn: 0))
+
+/* FLC, Flash Control */
+#define MXC_FLC_INSTANCES       (1)
+
+#define MXC_BASE_FLC            ((uint32_t)0x40029000UL)
+#define MXC_FLC                 ((mxc_flc_regs_t *)MXC_BASE_FLC)
+#define MXC_FLC0                MXC_FLC
+
+#define MXC_FLC_GET_IRQ(i)      (IRQn_Type)((i) == 0? FLC_IRQn: 0)
+#define MXC_FLC_GET_BASE(i)     ((i) == 0? MXC_BASE_FLC: 0)
+#define MXC_FLC_GET_FLC(i)      ((i) == 0? MXC_FLC: 0)
+#define MXC_FLC_GET_IDX(p)      ((p) == MXC_FLC? 0: -1)
+
+/* Internal Cache Controller */
+#define MXC_BASE_ICC            ((uint32)0x4002A000UL)
+#define MXC_ICC                 ((mxc_icc_regs_t *)MXC_BASE_ICC)
+#define MXC_ICC0                MXC_ICC
+
+/* ADC */
+#define MXC_BASE_ADC            ((uint32_t)0x40034000UL)
+#define MXC_ADC                 ((mxc_adc_regs_t *)MXC_BASE_ADC)
+#define MXC_ADC_MAX_CLOCK       8000000
+
+/* Pulse Train Generation */
+#define MXC_CFG_PT_INSTANCES    (4)
+
+#define MXC_BASE_PTG            ((uint32_t)0x4003C000UL)
+#define MXC_PTG                 ((mxc_ptg_regs_t *)MXC_BASE_PTG)
+#define MXC_BASE_PT0            ((uint32_t)0x4003C020UL)
+#define MXC_PT0                 ((mxc_pt_regs_t *)MXC_BASE_PT0)
+#define MXC_BASE_PT1            ((uint32_t)0x4003C040UL)
+#define MXC_PT1                 ((mxc_pt_regs_t *)MXC_BASE_PT1)
+#define MXC_BASE_PT2            ((uint32_t)0x4003C060UL)
+#define MXC_PT2                 ((mxc_pt_regs_t *)MXC_BASE_PT2)
+#define MXC_BASE_PT3            ((uint32_t)0x4003C080UL)
+#define MXC_PT3                 ((mxc_pt_regs_t *)MXC_BASE_PT3)
+
+#define MXC_PT_GET_BASE(i)      \
+    ((i) == 0?  MXC_BASE_PT0:   \
+     (i) == 1?  MXC_BASE_PT1:   \
+     (i) == 2?  MXC_BASE_PT2:   \
+     (i) == 3?  MXC_BASE_PT3:   0)
+
+#define MXC_PT_GET_PT(i)        \
+    ((i) == 0?  MXC_PT0:        \
+     (i) == 1?  MXC_PT1:        \
+     (i) == 2?  MXC_PT2:        \
+     (i) == 3?  MXC_PT3:        0)
+
+#define MXC_PT_GET_IDX(p)       \
+    ((p) == MXC_PT0?  0:        \
+     (p) == MXC_PT1?  1:        \
+     (p) == MXC_PT2?  2:        \
+     (p) == MXC_PT3?  3:        -1)
+
+/* UART / Serial Port Interface */
+#define MXC_SPI_INSTANCES       (2)
+#define MXC_SPI_SS_INSTANCES    (1)
+#define MXC_SPI_FIFO_DEPTH      (32)
+
+#define MXC_BASE_SPI0           ((uint32_t)0x40046000UL)
+#define MXC_SPI0                ((mxc_spi_regs_t *)MXC_BASE_SPI0)
+#define MXC_BASE_SPI1           ((uint32_t)0x40047000UL)
+#define MXC_SPI1                ((mxc_spi_regs_t *)MXC_BASE_SPI1)
+
+#define MXC_SPI_GET_IRQ(i)      (IRQn_Type)((i) == 0? SPI0_IRQn: \
+                                            (i) == 1? SPI1_IRQn: 0)
+#define MXC_SPI_GET_BASE(i)     ((i) == 0? MXC_BASE_SPI0: \
+                                 (i) == 1? MXC_BASE_SPI1: 0)
+#define MXC_SPI_GET_SPI(i)      ((i) == 0? MXC_SPI0: \
+                                 (i) == 1? MXC_SPI1: 0)
+#define MXC_SPI_GET_IDX(p)      ((p) == MXC_SPI0? 0: \
+                                 (p) == MXC_SPI1? 1: -1)
+
+/* TRNG, Ture Random Number Generator */
+#define MXC_BASE_TRNG           ((uint32_t)0x4004D000UL)
+#define MXC_TRNG                ((mxc_trng_regs_t *)MXC_BASE_TRNG)
+
+/* I2S, Inter-IC Sound */
+#define MXC_BASE_I2S            ((uint32_t)0x40060000UL)
+#define MXC_I2S                 ((mxc_i2s_regs_t *)MXC_BASE_I2S)
+
+/* CAN, Controller Area Network */
+#define MXC_CAN_INSTANCES       (1)
+
+#define MXC_BASE_CAN            ((uint32_t)0x40064000UL)
+#define MXC_CAN                 ((mxc_can_regs_t *)MXC_BASE_CAN)
+#define MXC_CAN0                MXC_CAN
+
+#define MXC_CAN_GET_IDX(p)      ((p) == MXC_CAN? 0: -1)
+#define MXC_CAN_GET_BASE(i)     ((i) == 0? MXC_BASE_CAN: 0)
+#define MXC_CAN_GET_CAN(i)      ((i) == 0? MXC_CAN: 0)
+#define MXC_CAN_GET_IRQ(i)      (IRQn_Type)((i) == 0? CAN_IRQn: 0)
+
+/* Bit Shifting */
+#define MXC_F_BIT_0             (1 << 0)
+#define MXC_F_BIT_1             (1 << 1)
+#define MXC_F_BIT_2             (1 << 2)
+#define MXC_F_BIT_3             (1 << 3)
+#define MXC_F_BIT_4             (1 << 4)
+#define MXC_F_BIT_5             (1 << 5)
+#define MXC_F_BIT_6             (1 << 6)
+#define MXC_F_BIT_7             (1 << 7)
+#define MXC_F_BIT_8             (1 << 8)
+#define MXC_F_BIT_9             (1 << 9)
+#define MXC_F_BIT_10            (1 << 10)
+#define MXC_F_BIT_11            (1 << 11)
+#define MXC_F_BIT_12            (1 << 12)
+#define MXC_F_BIT_13            (1 << 13)
+#define MXC_F_BIT_14            (1 << 14)
+#define MXC_F_BIT_15            (1 << 15)
+#define MXC_F_BIT_16            (1 << 16)
+#define MXC_F_BIT_17            (1 << 17)
+#define MXC_F_BIT_18            (1 << 18)
+#define MXC_F_BIT_19            (1 << 19)
+#define MXC_F_BIT_20            (1 << 20)
+#define MXC_F_BIT_21            (1 << 21)
+#define MXC_F_BIT_22            (1 << 22)
+#define MXC_F_BIT_23            (1 << 23)
+#define MXC_F_BIT_24            (1 << 24)
+#define MXC_F_BIT_25            (1 << 25)
+#define MXC_F_BIT_26            (1 << 26)
+#define MXC_F_BIT_27            (1 << 27)
+#define MXC_F_BIT_28            (1 << 28)
+#define MXC_F_BIT_29            (1 << 29)
+#define MXC_F_BIT_30            (1 << 30)
+#define MXC_F_BIT_31            (1 << 31)
+
+/* Bit Banding */
+#define BITBAND(reg, bit)                                                               \
+    ((0xf0000000 & (uint32_t)(reg)) +       \
+      0x2000000 +                           \
+      (((uint32_t)(reg)&0x0fffffff) << 5) + \
+      ((bit) << 2))
+
+#define MXC_CLRBIT(reg, bit)    (*(volatile uint32_t *)BITBAND(reg, bit) = 0)
+#define MXC_SETBIT(reg, bit)    (*(volatile uint32_t *)BITBAND(reg, bit) = 1)
+#define MXC_GETBIT(reg, bit)    (*(volatile uint32_t *)BITBAND(reg, bit))
+
+#define MXC_SETFIELD(reg, mask, value) ((reg) = ((reg) & ~(mask)) | ((value) & (mask)))
+
+/* SCB CPACR, System Control Block - Coprocessor Access Control Register */
+#define SCB_CPACR_CP10_Pos      20                              /*!< SCB CPACR: Coprocessor 10 Position */
+#define SCB_CPACR_CP10_Msk      (0x3UL << SCB_CPACR_CP10_Pos)   /*!< SCB CPACR: Coprocessor 10 Mask */
+#define SCB_CPACR_CP11_Pos      22                              /*!< SCB CPACR: Coprocessor 11 Position */
+#define SCB_CPACR_CP11_Msk      (0x3UL << SCB_CPACR_CP11_Pos)   /*!< SCB CPACR: Coprocessor 11 Mask */
 
 #endif // LIBRARIES_CMSIS_DEVICE_MAXIM_MAX32662_INCLUDE_MAX32662_H_
